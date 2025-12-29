@@ -1,1 +1,37 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Function to get the token safely
+def getMapboxToken() {
+    // 1. Check if it's in the System Environment (GitHub Actions uses this)
+    def token = System.getenv("MAPBOX_DOWNLOADS_TOKEN")
+    
+    // 2. If not, try to read it from local.properties (Local development)
+    if (token == null) {
+        def localProperties = new Properties()
+        def localFile = rootProject.file("local.properties")
+        if (localFile.exists()) {
+            localProperties.load(localFile.newDataInputStream())
+            token = localProperties.getProperty("MAPBOX_DOWNLOADS_TOKEN")
+        }
+    }
+    return token
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // Mapbox configuration
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not hardcode "mapbox" or the token here!
+                username = "mapbox"
+                // Call the function we wrote above
+                password = getMapboxToken() 
+            }
+        }
+    }
+}
