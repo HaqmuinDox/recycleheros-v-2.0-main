@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RecycleHeroes</string>
+    <string name="mapbox_access_token">sk.eyJ1IjoidGhpbG94ZW4iLCJhIjoiY2xwaTdhN2xqMGZ0azJrdDM3MWc4bWIyYyJ9.JrWCJ5uKQMJxYjyGzgH2Bg</string>
+    <string name="MainViewText">MapBox Example</string>
+    <string-array name="categories">
+        <item>Books</item>
+        <item>Clothing</item>
+        <item>elektronische Gegenstände</item>
+    </string-array>
+
+</resources>
+

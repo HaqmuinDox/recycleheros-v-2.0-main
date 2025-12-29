@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="10dp"
+        android:id="@+id/searchTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Suchen..."
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/white"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:startIconTint="@android:color/black"
+        app:startIconContentDescription="Search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_searchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="20dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="778dp"
+            android:gravity=""
+            android:orientation="vertical"
+
+            >
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="648dp">
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button_getRidOf"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape"
+                        android:text="Loswerden"
+                        android:textSize="19sp" />
+
+                    <Button
+                        android:id="@+id/button_discover"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape"
+                        android:text="Entdecken"
+                        android:textSize="19sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In deiner Nähe:"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <ListView
+                    android:id="@+id/lv_searchResult"
+                    android:layout_marginHorizontal="30px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1750px"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:layout_editor_absoluteX="-4dp" />
+            </TableLayout>
+
+
+            <ImageButton
+                android:id="@+id/imageButton10"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="69dp"
+                android:layout_height="86dp"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary"
+                android:src="@drawable/baseline_person_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
