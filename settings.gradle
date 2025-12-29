@@ -5,6 +5,26 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+// 1. Define a helper to find the token safely
+def getMapboxToken() {
+    // Try to get it from the System Environment (GitHub Actions)
+    def token = System.getenv("MAPBOX_DOWNLOADS_TOKEN")
+    
+    // If not found, try to read from local.properties (Local Development)
+    if (token == null) {
+        def localFile = file("local.properties")
+        if (localFile.exists()) {
+            def properties = new Properties()
+            localFile.withInputStream { instr ->
+                properties.load(instr)
+            }
+            token = properties.getProperty("MAPBOX_DOWNLOADS_TOKEN")
+        }
+    }
+    return token
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -16,11 +36,9 @@ dependencyResolutionManagement {
                 basic(BasicAuthentication)
             }
             credentials {
-                // Do not change the username below.
-                // This should always be `mapbox` (not your username).
                 username = "mapbox"
-                // Use the secret token you stored in gradle.properties as the password
-                password = MAPBOX_DOWNLOADS_TOKEN
+                // 2. Call the helper function here
+                password = getMapboxToken() 
             }
         }
     }
